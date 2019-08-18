@@ -1,0 +1,8 @@
+public class BadgesGivenToMeController {
+   @AuraEnabled 
+     public static List<WorkBadge> getAllBadgesGivenToMe(){
+        List<WorkBadge> workbdg =[SELECT Definition.Name, Message, ImageUrl, Giver.Name FROM WorkBadge
+                                 where RecipientId=:UserInfo.getUserId()];
+        return workbdg;
+     }
+}
